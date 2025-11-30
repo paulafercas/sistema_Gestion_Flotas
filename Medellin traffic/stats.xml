@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-11-27T18:49:01.548328-05:00 by Eclipse SUMO GUI 1.25.0
+<!-- generated on 2025-11-29T19:17:34.470784-05:00 by Eclipse SUMO GUI 1.25.0
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="./Medellin traffic/osm.net.xml.gz"/>
-        <route-files value="./Medellin traffic/osm_pt.rou.xml,./Medellin traffic/osm.bus.trips.xml,./Medellin traffic/osm.motorcycle.trips.xml,./Medellin traffic/osm.passenger.trips.xml"/>
-        <additional-files value="./Medellin traffic/osm.poly.xml.gz,./Medellin traffic/osm_stops.add.xml,./Medellin traffic/output.add.xml"/>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="osm_pt.rou.xml,osm.bus.trips.xml,osm.motorcycle.trips.xml,osm.passenger.trips.xml"/>
+        <additional-files value="osm.poly.xml.gz,osm_stops.add.xml,output.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="./Medellin traffic/tripinfos.xml"/>
-        <stop-output value="./Medellin traffic/stopinfos.xml"/>
-        <statistic-output value="./Medellin traffic/stats.xml"/>
+        <tripinfo-output value="tripinfos.xml"/>
+        <stop-output value="stopinfos.xml"/>
+        <statistic-output value="stats.xml"/>
     </output>
 
     <processing>
@@ -32,11 +32,11 @@
     </report>
 
     <traci_server>
-        <remote-port value="61235"/>
+        <remote-port value="56057"/>
     </traci_server>
 
     <gui_only>
-        <gui-settings-file value="./Medellin traffic/osm.view.xml"/>
+        <gui-settings-file value="osm.view.xml"/>
         <start value="true"/>
     </gui_only>
 
@@ -44,13 +44,13 @@
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="32437.46" clockEnd="32828.84" clockDuration="391.38" traciDuration="3.15" realTimeFactor="3.22" vehicleUpdatesPerSecond="4810.00" personUpdatesPerSecond="0.00" begin="0.00" end="1262.00" duration="1262.00"/>
-    <vehicles loaded="5784" inserted="5184" running="2361" waiting="19"/>
-    <teleports total="111" jam="48" yield="53" wrongLane="10"/>
-    <safety collisions="0" emergencyStops="0" emergencyBraking="0"/>
+    <performance clockBegin="247452.27" clockEnd="247701.14" clockDuration="248.87" traciDuration="2.46" realTimeFactor="7.45" vehicleUpdatesPerSecond="13631.38" personUpdatesPerSecond="0.00" begin="0.00" end="1855.00" duration="1855.00"/>
+    <vehicles loaded="8259" inserted="7625" running="2730" waiting="22"/>
+    <teleports total="241" jam="94" yield="109" wrongLane="38"/>
+    <safety collisions="0" emergencyStops="0" emergencyBraking="1"/>
     <persons loaded="0" running="0" jammed="0"/>
     <personTeleports total="0" abortWait="0" wrongDest="0"/>
-    <vehicleTripStatistics count="2823" routeLength="2311.73" speed="9.07" duration="286.04" waitingTime="90.84" timeLoss="154.75" departDelay="1.05" departDelayWaiting="-1.00" totalTravelTime="807484.00" totalDepartDelay="2963.93"/>
+    <vehicleTripStatistics count="4895" routeLength="2610.00" speed="8.76" duration="350.89" waitingTime="127.17" timeLoss="204.07" departDelay="0.99" departDelayWaiting="-1.00" totalTravelTime="1717617.00" totalDepartDelay="4870.47"/>
     <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
     <rideStatistics number="0"/>
     <transportStatistics number="0"/>
