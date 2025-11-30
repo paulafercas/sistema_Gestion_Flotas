@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-11-26T09:22:07.701393-05:00 by Eclipse SUMO netedit 1.25.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- StoppingPlaces -->
+    <busStop id="1210026887" name="Caribe" lane="182779999#0_0" startPos="558.18" endPos="758.18" friendlyPos="1" lines="A">
+        <access lane="607707649_0" pos="13.48" friendlyPos="1" length="105.25"/>
+        <access lane="607707650_0" pos="14.77" friendlyPos="1" length="106.52"/>
+        <access lane="931890127_0" pos="0.00" friendlyPos="1" length="118.36"/>
+        <access lane="931890128_0" pos="0.00" friendlyPos="1" length="119.08"/>
+        <access lane="945300917#2_0" pos="109.25" friendlyPos="1" length="118.44"/>
+    </busStop>
+    <busStop id="1210026908" name="Prado" lane="182779999#1_0" startPos="2342.28" endPos="2542.28" friendlyPos="1" lines="A">
+        <access lane="1220292418_0" pos="233.14" friendlyPos="1" length="9.11"/>
+        <access lane="31880162_0" pos="72.39" friendlyPos="1" length="13.92"/>
+        <access lane="515114428#0_0" pos="16.57" friendlyPos="1" length="13.77"/>
+        <access lane="515114428#2_0" pos="1.35" friendlyPos="1" length="9.94"/>
+        <access lane="621092920_0" pos="0.00" friendlyPos="1" length="14.89"/>
+    </busStop>
+    <busStop id="1210026924" name="Hospital" lane="182779999#1_0" startPos="1498.80" endPos="1698.80" friendlyPos="1" lines="A">
+        <access lane="1019173169_0" pos="31.06" friendlyPos="1" length="21.28"/>
+        <access lane="1019173170_0" pos="62.69" friendlyPos="1" length="25.61"/>
+        <access lane="934500090_0" pos="24.53" friendlyPos="1" length="20.99"/>
+        <access lane="934500091_0" pos="29.35" friendlyPos="1" length="12.17"/>
+        <access lane="934500092#0_0" pos="0.00" friendlyPos="1" length="48.30"/>
+    </busStop>
+    <busStop id="1210026946" name="Alpujarra" lane="182779999#1_0" startPos="3991.19" endPos="4191.19" friendlyPos="1" lines="A">
+        <access lane="1016763333#1_0" pos="61.85" friendlyPos="1" length="26.73"/>
+        <access lane="576851149#2_0" pos="57.46" friendlyPos="1" length="9.99"/>
+        <access lane="932914933#1_0" pos="57.58" friendlyPos="1" length="19.64"/>
+        <access lane="932914934#2_0" pos="6.95" friendlyPos="1" length="18.27"/>
+        <access lane="99215364#3_0" pos="7.03" friendlyPos="1" length="12.18"/>
+    </busStop>
+    <busStop id="1210026986" name="Exposiciones" lane="182779999#1_0" startPos="4501.10" endPos="4701.10" friendlyPos="1" lines="A">
+        <access lane="1131224768#0_0" pos="1.80" friendlyPos="1" length="9.44"/>
+        <access lane="1131224768#1_0" pos="0.00" friendlyPos="1" length="7.17"/>
+        <access lane="33463534#2_0" pos="0.20" friendlyPos="1" length="14.33"/>
+        <access lane="34941109_0" pos="3.15" friendlyPos="1" length="1.09"/>
+        <access lane="935493301_0" pos="0.00" friendlyPos="1" length="11.13"/>
+    </busStop>
+    <busStop id="1210027001" name="Parque Berrío" lane="182779999#1_0" startPos="3078.73" endPos="3278.73" friendlyPos="1" lines="A">
+        <access lane="-1206471790#2_0" pos="79.34" friendlyPos="1" length="15.69"/>
+        <access lane="1206471790#2_0" pos="4.67" friendlyPos="1" length="12.69"/>
+        <access lane="31960733#3_0" pos="0.51" friendlyPos="1" length="14.05"/>
+        <access lane="31960733#4_0" pos="0.11" friendlyPos="1" length="11.95"/>
+        <access lane="779943169#3_0" pos="79.63" friendlyPos="1" length="4.97"/>
+    </busStop>
+    <busStop id="1211554020" name="San Antonio" lane="1018611997_0" startPos="999.39" endPos="1199.39" friendlyPos="1" lines="A">
+        <access lane="106285746#0_0" pos="0.00" friendlyPos="1" length="10.84"/>
+        <access lane="106285749#0_0" pos="0.00" friendlyPos="1" length="13.83"/>
+        <access lane="932532418#10_0" pos="17.78" friendlyPos="1" length="12.60"/>
+        <access lane="932532418#11_0" pos="0.00" friendlyPos="1" length="11.87"/>
+        <access lane="932532421_0" pos="0.00" friendlyPos="1" length="15.44"/>
+    </busStop>
+    <busStop id="1211554021" name="San Antonio" lane="182779999#1_0" startPos="3501.87" endPos="3701.87" friendlyPos="1" lines="A">
+        <access lane="1016517132#0_0" pos="15.13" friendlyPos="1" length="13.47"/>
+        <access lane="1016517132#1_0" pos="0.00" friendlyPos="1" length="13.92"/>
+        <access lane="106285746#0_0" pos="0.00" friendlyPos="1" length="16.47"/>
+        <access lane="106285749#0_0" pos="0.00" friendlyPos="1" length="9.84"/>
+        <access lane="932532422#0_0" pos="0.00" friendlyPos="1" length="15.94"/>
+    </busStop>
+    <busStop id="1213875058" name="Universidad" lane="182779999#1_0" startPos="686.67" endPos="886.67" friendlyPos="1" lines="A">
+        <access lane="-457993329#3_0" pos="25.14" friendlyPos="1" length="17.83"/>
+        <access lane="370080467#1_0" pos="45.13" friendlyPos="1" length="21.60"/>
+        <access lane="457993329#3_0" pos="14.83" friendlyPos="1" length="14.83"/>
+        <access lane="515113732#0_0" pos="15.37" friendlyPos="1" length="24.09"/>
+        <access lane="515113733#0_0" pos="0.00" friendlyPos="1" length="27.49"/>
+    </busStop>
+    <busStop id="1215434359" name="San Antonio" lane="105564897#0_0" startPos="0.00" endPos="200.00" friendlyPos="1" lines="B">
+        <access lane="578914903#0_0" pos="9.29" friendlyPos="1" length="23.75"/>
+        <access lane="578914903#1_0" pos="9.47" friendlyPos="1" length="8.78"/>
+        <access lane="932532418#10_0" pos="2.25" friendlyPos="1" length="18.54"/>
+        <access lane="932532418#9_0" pos="18.69" friendlyPos="1" length="25.56"/>
+        <access lane="932532421_0" pos="10.37" friendlyPos="1" length="26.52"/>
+    </busStop>
+    <busStop id="1215435489" name="Suramericana" lane="105540787_0" startPos="2513.58" endPos="2713.58" friendlyPos="1" lines="B">
+        <access lane="-1197119207#0_0" pos="22.21" friendlyPos="1" length="8.90"/>
+        <access lane="1197119207#0_0" pos="26.16" friendlyPos="1" length="11.90"/>
+        <access lane="932492021#0_0" pos="2.18" friendlyPos="1" length="16.51"/>
+        <access lane="932492023_0" pos="11.61" friendlyPos="1" length="16.34"/>
+        <access lane="932492024#0_0" pos="1.53" friendlyPos="1" length="14.39"/>
+    </busStop>
+    <busStop id="1215435490" name="Suramericana" lane="105564897#1_0" startPos="273.26" endPos="473.26" friendlyPos="1" lines="B">
+        <access lane="-1197119207#0_0" pos="22.17" friendlyPos="1" length="14.88"/>
+        <access lane="1197119207#0_0" pos="26.20" friendlyPos="1" length="17.88"/>
+        <access lane="932492021#0_0" pos="6.16" friendlyPos="1" length="16.52"/>
+        <access lane="932492022_0" pos="0.00" friendlyPos="1" length="17.14"/>
+        <access lane="932492024#0_0" pos="5.51" friendlyPos="1" length="14.37"/>
+    </busStop>
+    <busStop id="1215437246" name="Estadio" lane="105564897#1_0" startPos="855.13" endPos="1055.13" friendlyPos="1" lines="B">
+        <access lane="-772722917#1_0" pos="29.96" friendlyPos="1" length="23.20"/>
+        <access lane="1153073302#1_0" pos="55.53" friendlyPos="1" length="39.43"/>
+        <access lane="772722917#1_0" pos="25.16" friendlyPos="1" length="26.20"/>
+        <access lane="932453793#1_0" pos="6.72" friendlyPos="1" length="40.76"/>
+        <access lane="98778639#6_0" pos="36.55" friendlyPos="1" length="34.77"/>
+    </busStop>
+    <busStop id="1215437251" name="Estadio" lane="105540787_0" startPos="1932.53" endPos="2132.53" friendlyPos="1" lines="B">
+        <access lane="-772722917#1_0" pos="30.29" friendlyPos="1" length="16.62"/>
+        <access lane="1153073302#1_0" pos="55.24" friendlyPos="1" length="32.85"/>
+        <access lane="772722917#1_0" pos="24.82" friendlyPos="1" length="19.62"/>
+        <access lane="932453793#1_0" pos="2.33" friendlyPos="1" length="40.46"/>
+        <access lane="98778639#6_0" pos="36.31" friendlyPos="1" length="28.19"/>
+    </busStop>
+    <busStop id="1215445790" name="Floresta" lane="105540787_0" startPos="618.81" endPos="818.81" friendlyPos="1" lines="B">
+        <access lane="1125491520#0_0" pos="8.80" friendlyPos="1" length="27.80"/>
+        <access lane="1125491520#2_0" pos="0.00" friendlyPos="1" length="27.32"/>
+        <access lane="34039559#0_0" pos="15.41" friendlyPos="1" length="6.92"/>
+        <access lane="34939358#2_0" pos="10.51" friendlyPos="1" length="32.11"/>
+        <access lane="34939360#1_0" pos="10.03" friendlyPos="1" length="11.21"/>
+    </busStop>
+    <busStop id="1215445793" name="Floresta" lane="105564897#1_0" startPos="2168.44" endPos="2368.44" friendlyPos="1" lines="B">
+        <access lane="1125491520#0_0" pos="8.80" friendlyPos="1" length="22.27"/>
+        <access lane="1125491520#2_0" pos="0.00" friendlyPos="1" length="22.33"/>
+        <access lane="34039559#0_0" pos="19.92" friendlyPos="1" length="7.31"/>
+        <access lane="34939358#2_0" pos="10.51" friendlyPos="1" length="26.60"/>
+        <access lane="34939360#1_0" pos="5.52" friendlyPos="1" length="10.80"/>
+    </busStop>
+    <busStop id="1215491009" name="Santa Lucía" lane="105564897#1_0" startPos="2791.79" endPos="2991.79" friendlyPos="1" lines="B">
+        <access lane="-33904984#2_0" pos="6.09" friendlyPos="1" length="13.81"/>
+        <access lane="1201761832#1_0" pos="8.08" friendlyPos="1" length="16.34"/>
+        <access lane="1201761833_0" pos="9.84" friendlyPos="1" length="5.74"/>
+        <access lane="1201761873#0_0" pos="0.20" friendlyPos="1" length="18.55"/>
+        <access lane="33904984#2_0" pos="8.79" friendlyPos="1" length="9.01"/>
+    </busStop>
+    <busStop id="1215491010" name="Santa Lucía" lane="105540787_0" startPos="0.00" endPos="200.00" friendlyPos="1" lines="B">
+        <access lane="-33904984#2_0" pos="1.94" friendlyPos="1" length="11.83"/>
+        <access lane="1201761833_0" pos="5.70" friendlyPos="1" length="3.75"/>
+        <access lane="1201761873#0_0" pos="0.20" friendlyPos="1" length="12.27"/>
+        <access lane="1201761874#2_0" pos="0.19" friendlyPos="1" length="13.35"/>
+        <access lane="33904984#2_0" pos="12.94" friendlyPos="1" length="7.03"/>
+    </busStop>
+    <busStop id="13227444201" name="San Antonio" lane="105540787_0" startPos="4121.66" endPos="4321.66" friendlyPos="1" lines="B">
+        <access lane="106285746#0_0" pos="16.40" friendlyPos="1" length="29.76"/>
+        <access lane="578914903#0_0" pos="9.29" friendlyPos="1" length="26.76"/>
+        <access lane="578914903#1_0" pos="9.69" friendlyPos="1" length="14.63"/>
+        <access lane="932532418#10_0" pos="6.14" friendlyPos="1" length="19.09"/>
+        <access lane="932532421_0" pos="10.62" friendlyPos="1" length="20.67"/>
+    </busStop>
+    <busStop id="267547094" name="Exposiciones" lane="1018611997_0" startPos="0.00" endPos="200.00" friendlyPos="1" lines="A">
+        <access lane="1131224768#0_0" pos="1.61" friendlyPos="1" length="5.92"/>
+        <access lane="1131224768#1_0" pos="0.00" friendlyPos="1" length="9.78"/>
+        <access lane="33463586#2_0" pos="0.20" friendlyPos="1" length="8.19"/>
+        <access lane="34941109_0" pos="0.00" friendlyPos="1" length="2.37"/>
+        <access lane="935493301_0" pos="0.00" friendlyPos="1" length="10.55"/>
+    </busStop>
+    <busStop id="267547098" name="Parque Berrío" lane="1018611997_0" startPos="1423.63" endPos="1623.63" friendlyPos="1" lines="A">
+        <access lane="1206471790#2_0" pos="5.71" friendlyPos="1" length="19.38"/>
+        <access lane="31960733#3_0" pos="0.51" friendlyPos="1" length="19.71"/>
+        <access lane="31960733#4_0" pos="4.56" friendlyPos="1" length="13.57"/>
+        <access lane="31960733#5_0" pos="0.00" friendlyPos="1" length="20.00"/>
+        <access lane="779943169#3_0" pos="78.95" friendlyPos="1" length="11.77"/>
+    </busStop>
+    <busStop id="267547104" name="Prado" lane="1018611997_0" startPos="2159.44" endPos="2359.44" friendlyPos="1" lines="A">
+        <access lane="1220292418_0" pos="237.00" friendlyPos="1" length="8.24"/>
+        <access lane="31880162_0" pos="68.54" friendlyPos="1" length="14.78"/>
+        <access lane="515114428#0_0" pos="16.57" friendlyPos="1" length="18.23"/>
+        <access lane="515114428#2_0" pos="1.09" friendlyPos="1" length="15.77"/>
+        <access lane="934500132_0" pos="6.51" friendlyPos="1" length="16.14"/>
+    </busStop>
+    <busStop id="267547106" name="Hospital" lane="1018611997_0" startPos="3003.62" endPos="3203.62" friendlyPos="1" lines="A">
+        <access lane="1019173169_0" pos="34.74" friendlyPos="1" length="21.16"/>
+        <access lane="1019173170_0" pos="59.01" friendlyPos="1" length="25.62"/>
+        <access lane="934500090_0" pos="24.53" friendlyPos="1" length="15.90"/>
+        <access lane="934500091_0" pos="29.35" friendlyPos="1" length="16.99"/>
+        <access lane="934500092#0_0" pos="0.00" friendlyPos="1" length="53.82"/>
+    </busStop>
+    <busStop id="267547115" name="Universidad" lane="1018611997_0" startPos="3820.49" endPos="4020.49" friendlyPos="1" lines="A">
+        <access lane="-457993329#3_0" pos="24.70" friendlyPos="1" length="13.16"/>
+        <access lane="370080467#1_0" pos="45.53" friendlyPos="1" length="26.27"/>
+        <access lane="457993329#3_0" pos="15.27" friendlyPos="1" length="10.16"/>
+        <access lane="515113732#0_0" pos="15.37" friendlyPos="1" length="23.15"/>
+        <access lane="515113733#0_0" pos="0.00" friendlyPos="1" length="28.09"/>
+    </busStop>
+    <busStop id="267547778" name="Caribe" lane="34939281#1_0" startPos="309.89" endPos="509.89" friendlyPos="1" lines="A">
+        <access lane="607707649_0" pos="13.48" friendlyPos="1" length="105.32"/>
+        <access lane="607707650_0" pos="14.77" friendlyPos="1" length="105.38"/>
+        <access lane="607707651_0" pos="20.92" friendlyPos="1" length="125.89"/>
+        <access lane="931890127_0" pos="0.00" friendlyPos="1" length="119.33"/>
+        <access lane="931890128_0" pos="0.00" friendlyPos="1" length="118.89"/>
+    </busStop>
+    <busStop id="370046773" name="Alpujarra" lane="1018611997_0" startPos="511.21" endPos="711.21" friendlyPos="1" lines="A">
+        <access lane="576851149#2_0" pos="56.48" friendlyPos="1" length="4.53"/>
+        <access lane="932914933#1_0" pos="56.63" friendlyPos="1" length="14.16"/>
+        <access lane="932914934#2_0" pos="5.92" friendlyPos="1" length="23.72"/>
+        <access lane="99215364#2_0" pos="40.51" friendlyPos="1" length="29.18"/>
+        <access lane="99215364#3_0" pos="6.04" friendlyPos="1" length="17.64"/>
+    </busStop>
+    <busStop id="4100629928" name="San Antonio" lane="933933954#17_0" startPos="8.83" endPos="33.83" friendlyPos="1" lines="T-A"/>
+    <busStop id="4351098851" name="San Antonio" lane="1427513655_0" startPos="0.00" endPos="25.00" friendlyPos="1" lines="T-A"/>
+    <busStop id="5144879974" name="Palos Verdes" lane="1229646277#0_0" startPos="6.34" endPos="21.34" friendlyPos="1" lines="2"/>
+    <busStop id="8417220584" name="Cra 81 #32FF-12" lane="1020398539#0_0" startPos="16.70" endPos="31.70" friendlyPos="1" lines="C3-001"/>
+    <busStop id="8644050780" name="Cisneros" lane="105564897#0_0" startPos="627.91" endPos="827.91" friendlyPos="1" lines="B">
+        <access lane="1020358495#0_0" pos="0.00" friendlyPos="1" length="34.00"/>
+        <access lane="1020975659_0" pos="0.00" friendlyPos="1" length="30.74"/>
+        <access lane="1229267354_0" pos="0.00" friendlyPos="1" length="28.59"/>
+        <access lane="30658142_0" pos="33.86" friendlyPos="1" length="22.44"/>
+        <access lane="579016955#6_0" pos="16.51" friendlyPos="1" length="26.37"/>
+    </busStop>
+    <busStop id="8660247118" name="Cisneros" lane="105540787_0" startPos="3494.15" endPos="3694.15" friendlyPos="1" lines="B">
+        <access lane="1020358495#0_0" pos="0.00" friendlyPos="1" length="35.45"/>
+        <access lane="1020975659_0" pos="0.00" friendlyPos="1" length="35.28"/>
+        <access lane="1229267354_0" pos="0.00" friendlyPos="1" length="24.31"/>
+        <access lane="30658142_0" pos="32.38" friendlyPos="1" length="22.14"/>
+        <access lane="579016955#6_0" pos="16.51" friendlyPos="1" length="26.26"/>
+    </busStop>
+</additional>

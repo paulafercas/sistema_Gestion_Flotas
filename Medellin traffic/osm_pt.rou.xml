@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-11-26T10:35:31.639028-05:00 by Eclipse SUMO netedit 1.25.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="pt_aerialway" length="2.50" vClass="cable_car" width="2.00" personCapacity="4"/>
+    <vType id="pt_bus" vClass="bus"/>
+    <vType id="pt_ferry" vClass="ship"/>
+    <vType id="pt_light_rail" vClass="rail_urban"/>
+    <vType id="pt_minibus" vClass="bus"/>
+    <vType id="pt_monorail" vClass="rail_urban"/>
+    <vType id="pt_share_taxi" vClass="taxi"/>
+    <vType id="pt_subway" vClass="subway"/>
+    <vType id="pt_train" vClass="rail"/>
+    <vType id="pt_tram" vClass="tram"/>
+    <vType id="pt_trolleybus" vClass="bus"/>
+    <!-- Routes -->
+    <route id="pt_bus_2:0" edges="362477589#1 362477589#2 -362477587#9 -362477587#6 -362477587#5 -362477587#4 -362477587#1 -362477587#0 1229646276#1 1229646277#0 935475924#1 935475924#2 725737012 571809760#1 571809760#2 571809760#3 46594805#2 46594805#3 46594805#4 46594805#5 46594805#8 571799075#0 572092444#2 572092444#3 1019221753#0 1019221753#1 1019221750#1 1229646279#0 553071022#0 553071022#1 1154378072 363162718#0 363162718#1 363162718#3 363162718#4 363162718#5 363162718#8 579003110#1 579003110#3 579003110#4 579003110#5 44533214#0 44533214#2 44533214#8 44533214#10 31879751#1 1020961072 1019222189 99222654 576851137#0 31878880#3 31878880#4 31878880#5 31878880#6 1297791761 1020415215" color="101,169,172">
+        <stop busStop="5144879974" duration="20.00" until="172.00"/>
+    </route>
+    <route id="pt_bus_C3-001:1" edges="576504528#0 576504528#1 576504528#2 1020398539#0 1020398539#1 576504565#0 576504565#1 576504565#2 576504565#3 576504565#4 576504565#5 576504565#6 576504565#7 576504565#8 576504565#9 576504565#10">
+        <stop busStop="8417220584" duration="20.00" until="56.00"/>
+    </route>
+    <route id="pt_subway_A:0" edges="1018611997 34939281#1">
+        <stop busStop="267547094" duration="20.00" until="43.00"/>
+        <stop busStop="370046773" duration="20.00" until="102.00"/>
+        <stop busStop="1211554020" duration="20.00" until="159.00"/>
+        <stop busStop="267547098" duration="20.00" until="214.00"/>
+        <stop busStop="267547104" duration="20.00" until="280.00"/>
+        <stop busStop="267547106" duration="20.00" until="353.00"/>
+        <stop busStop="267547115" duration="20.00" until="424.00"/>
+        <stop busStop="267547778" duration="20.00" until="514.00"/>
+    </route>
+    <route id="pt_subway_A:1" edges="182779999#0 182779999#1">
+        <stop busStop="1210026887" duration="20.00" until="65.00"/>
+        <stop busStop="1213875058" duration="20.00" until="156.00"/>
+        <stop busStop="1210026924" duration="20.00" until="226.00"/>
+        <stop busStop="1210026908" duration="20.00" until="298.00"/>
+        <stop busStop="1210027001" duration="20.00" until="365.00"/>
+        <stop busStop="1211554021" duration="20.00" until="420.00"/>
+        <stop busStop="1210026946" duration="20.00" until="479.00"/>
+        <stop busStop="1210026986" duration="20.00" until="537.00"/>
+    </route>
+    <route id="pt_subway_B:0" edges="105564897#0 105564897#1">
+        <stop busStop="1215434359" duration="20.00" until="44.00"/>
+        <stop busStop="8644050780" duration="20.00" until="109.00"/>
+        <stop busStop="1215435490" duration="20.00" until="186.00"/>
+        <stop busStop="1215437246" duration="20.00" until="248.00"/>
+        <stop busStop="1215445793" duration="20.00" until="337.00"/>
+        <stop busStop="1215491009" duration="20.00" until="400.00"/>
+    </route>
+    <route id="pt_subway_B:1" edges="105540787">
+        <stop busStop="1215491010" duration="20.00" until="43.00"/>
+        <stop busStop="1215445790" duration="20.00" until="106.00"/>
+        <stop busStop="1215437251" duration="20.00" until="196.00"/>
+        <stop busStop="1215435489" duration="20.00" until="257.00"/>
+        <stop busStop="8660247118" duration="20.00" until="333.00"/>
+        <stop busStop="13227444201" duration="20.00" until="398.00"/>
+    </route>
+    <route id="pt_tram_T-A:0" edges="933924267#0 933924267#1 933924267#2 933924267#3 933924267#6 933924267#7 933924267#8 933924267#9 933924267#10 933924267#11 933924267#14 933924267#15 933924267#16 933924267#17 933924267#18 933924267#19 933924267#20 933924267#21 933924267#22 933924267#23 933933954#1 933933954#6 933933954#9 933933954#10 933933954#11 933933954#12 933933954#15 933933954#17" color="0,153,51">
+        <stop busStop="4100629928" duration="20.00" until="274.00"/>
+    </route>
+    <route id="pt_tram_T-A:1" edges="1427513655 932532449#2 932532449#5 932532449#6 932532449#7 932532449#8 932532449#11 932532449#16 932532449#17 932532449#18 932532449#20 932532449#21 932532449#22 932532449#23 932532449#24 932532449#25 933924264#1 933924264#4 933924264#5 933924264#6 933924264#7 933924264#8 933924264#9 933924264#12 933924264#13 933924264#14 933924264#15" color="0,153,51">
+        <stop busStop="4351098851" duration="20.00" until="33.00"/>
+    </route>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <trip id="veh_1" type="pt_bus" depart="0.00" color="red" from="1059356784" to="1051339861" via="34317609#3 98781694#1 936586525#0 98778639#6 37606549#2"/>
+    <trip id="veh_10" type="pt_bus" depart="0.00" color="0,239,253" from="280584801#1" to="280584801#0" via="261158259#1 367447053 32121224-AddedOffRampEdge 577269620#0 44851276 98732785#2 30658171#0 579383678 32111258 571136725#3 580577358"/>
+    <trip id="veh_11" type="pt_bus" depart="0.00" color="0,239,253" from="30657758#1" to="30657758#0" via="909602593#1 375279788#0 44533214#10 262053704#2 367619495#1 574245982#1"/>
+    <trip id="veh_12" type="pt_bus" depart="0.00" color="0,239,253" from="1228273201" to="370196244#5" via="-109200136#4 -1018414790#1 182956554#4 98729098#1 32121228 579479596#1 573282888#1 909897321#1 98731832#0 932914901#7 621092883#8 98729299#1 370196240#2"/>
+    <trip id="veh_2" type="pt_bus" depart="0.00" color="red" from="-65063644" to="-571475529" via="441448375#1-AddedOnRampEdge 571136702#5 1020089619#4 375279788#0 375277311#2 571159849#4 280587583#0"/>
+    <trip id="veh_3" type="pt_bus" depart="0.00" color="red" from="43372357#3" to="43372357#2" via="578688121#1 1278152793 1020128780#3 30614061#1 932914901#4 1020369388#1"/>
+    <trip id="veh_4" type="pt_bus" depart="0.00" color="0,255,13" from="-571716337#7" to="-571716337#9" via="-1018414790#1 173395769#7 1019259597#0 1019189458#0 1151365991#1 367619496#1 375277370#0 932914901#16 1020369388#1 1050505252#1 98729299#1"/>
+    <trip id="veh_5" type="pt_bus" depart="0.00" color="0,255,13" from="579440989#1" to="579441007#0" via="621152812#5 367447053 31880174#0 363162718#5 32491775#9 31965650#3 1016159703#1 32111130 578688106#3"/>
+    <trip id="veh_6" type="pt_bus" depart="0.00" color="0,255,13" from="-1154532113#2" to="-345327742#0" via="1154532118 572200051#0 945322097#0 905766474#0 571096588#2 35084188#0 1020315779#2 375276778#4 579479596#1 99868867#0"/>
+    <trip id="veh_7" type="pt_bus" depart="0.00" color="255,0,8" from="98775572#4" to="98775572#2" via="571089100#0 98742347#3 30614061#1 31878880#4 911164197#1-AddedOnRampEdge"/>
+    <trip id="veh_8" type="pt_bus" depart="0.00" color="255,0,8" from="170415759#5" to="170415759#3" via="32525751#1 1020120056#0 1234494292#1 1018333573#0 906465780#1 35413315#0 1131704682#0 30614061#1"/>
+    <trip id="veh_9" type="pt_bus" depart="0.00" color="255,0,8" from="883864381#0" to="-32836256#0" via="375276773#1 44533214#8 31878880#4 99215289#3 29586652#1 579383686#0 98731832#0 932914901#4"/>
+    <flow id="pt_subway_A:0" type="pt_subway" begin="15.00" end="3615.00" period="600" line="A:0" route="pt_subway_A:0">
+        <param key="completeness" value="0.38"/>
+        <param key="name" value="Metro Línea A: Dirección Niquía"/>
+    </flow>
+    <flow id="pt_subway_A:1" type="pt_subway" begin="52.00" end="3652.00" period="600" line="A:1" route="pt_subway_A:1">
+        <param key="completeness" value="0.38"/>
+        <param key="name" value="Metro Línea A: Dirección La Estrella"/>
+    </flow>
+    <flow id="pt_subway_B:0" type="pt_subway" begin="133.00" end="3733.00" period="600" line="B:0" route="pt_subway_B:0">
+        <param key="completeness" value="0.86"/>
+        <param key="name" value="Metro Línea B: Dirección San Javier"/>
+    </flow>
+    <flow id="pt_subway_B:1" type="pt_subway" begin="165.00" end="3765.00" period="600" line="B:1" route="pt_subway_B:1">
+        <param key="completeness" value="0.86"/>
+        <param key="name" value="Metro Línea B: Dirección San Antonio"/>
+    </flow>
+    <flow id="pt_bus_2:0" type="pt_bus" begin="253.00" end="3853.00" period="600" line="2:0" route="pt_bus_2:0">
+        <param key="completeness" value="0.50"/>
+        <param key="name" value="Metroplus Línea 2: Parque Aranjuez → U. de M."/>
+    </flow>
+    <flow id="pt_tram_T-A:0" type="pt_tram" begin="383.00" end="3983.00" period="600" line="T-A:0" route="pt_tram_T-A:0">
+        <param key="completeness" value="1.00"/>
+        <param key="name" value="Línea T-A: Oriente → San Antonio"/>
+    </flow>
+    <flow id="pt_tram_T-A:1" type="pt_tram" begin="406.00" end="4006.00" period="600" line="T-A:1" route="pt_tram_T-A:1">
+        <param key="completeness" value="1.00"/>
+        <param key="name" value="Línea T-A: San Antonio → Oriente"/>
+    </flow>
+    <flow id="pt_bus_C3-001:1" type="pt_bus" begin="535.00" end="4135.00" period="600" line="C3-001:1" route="pt_bus_C3-001:1">
+        <param key="completeness" value="0.03"/>
+        <param key="name" value="Ruta C3-001: Aguacatala -&gt; La Mota -&gt; Santa Gema"/>
+    </flow>
+</routes>

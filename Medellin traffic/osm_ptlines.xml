@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-11-24T15:19:47.331505-05:00 by Eclipse SUMO netconvert 1.25.0
+<netconvertConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <type-files value="${SUMO_HOME}\data\typemap\osmNetconvert.typ.xml,${SUMO_HOME}\data\typemap\osmNetconvertAerialway.typ.xml"/>
+        <osm-files value="osm_bbox.osm.xml.gz"/>
+    </input>
+
+    <output>
+        <output-file value="osm.net.xml.gz"/>
+        <output.street-names value="true"/>
+        <output.original-names value="true"/>
+        <ptstop-output value="osm_stops.add.xml"/>
+        <ptline-output value="osm_ptlines.xml"/>
+        <ptline-clean-up value="true"/>
+    </output>
+
+    <projection>
+        <proj.utm value="true"/>
+    </projection>
+
+    <processing>
+        <geometry.remove value="true"/>
+    </processing>
+
+    <tls_building>
+        <tls.discard-simple value="true"/>
+        <tls.join value="true"/>
+        <tls.guess-signals value="true"/>
+        <tls.default-type value="actuated"/>
+    </tls_building>
+
+    <ramp_guessing>
+        <ramps.guess value="true"/>
+    </ramp_guessing>
+
+    <junctions>
+        <junctions.join value="true"/>
+    </junctions>
+
+    <railway>
+        <railway.topology.repair value="true"/>
+    </railway>
+
+</netconvertConfiguration>
+-->
+
+<ptLines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/ptlines_file.xsd">
+    <ptLine id="1502460" name="Metro Línea A: Dirección Niquía" line="A" type="subway" vClass="subway" completeness="0.38" missingBefore="8" missingAfter="5">
+        <route edges="1018611997 34939281#1"/>
+        <busStop id="267547094" name="Exposiciones"/>
+        <busStop id="370046773" name="Alpujarra"/>
+        <busStop id="1211554020" name="San Antonio"/>
+        <busStop id="267547098" name="Parque Berrío"/>
+        <busStop id="267547104" name="Prado"/>
+        <busStop id="267547106" name="Hospital"/>
+        <busStop id="267547115" name="Universidad"/>
+        <busStop id="267547778" name="Caribe"/>
+    </ptLine>
+    <ptLine id="1502510" name="Metro Línea A: Dirección La Estrella" line="A" type="subway" vClass="subway" completeness="0.38" missingBefore="5" missingAfter="8">
+        <route edges="182779999#0 182779999#1"/>
+        <busStop id="1210026887" name="Caribe"/>
+        <busStop id="1213875058" name="Universidad"/>
+        <busStop id="1210026924" name="Hospital"/>
+        <busStop id="1210026908" name="Prado"/>
+        <busStop id="1210027001" name="Parque Berrío"/>
+        <busStop id="1211554021" name="San Antonio"/>
+        <busStop id="1210026946" name="Alpujarra"/>
+        <busStop id="1210026986" name="Exposiciones"/>
+    </ptLine>
+    <ptLine id="1504096" name="Metro Línea B: Dirección San Javier" line="B" type="subway" vClass="subway" completeness="0.86" missingAfter="1">
+        <route edges="105564897#0 105564897#1"/>
+        <busStop id="1215434359" name="San Antonio"/>
+        <busStop id="8644050780" name="Cisneros"/>
+        <busStop id="1215435490" name="Suramericana"/>
+        <busStop id="1215437246" name="Estadio"/>
+        <busStop id="1215445793" name="Floresta"/>
+        <busStop id="1215491009" name="Santa Lucía"/>
+    </ptLine>
+    <ptLine id="1504257" name="Metro Línea B: Dirección San Antonio" line="B" type="subway" vClass="subway" completeness="0.86" missingBefore="1">
+        <route edges="105540787"/>
+        <busStop id="1215491010" name="Santa Lucía"/>
+        <busStop id="1215445790" name="Floresta"/>
+        <busStop id="1215437251" name="Estadio"/>
+        <busStop id="1215435489" name="Suramericana"/>
+        <busStop id="8660247118" name="Cisneros"/>
+        <busStop id="13227444201" name="San Antonio"/>
+    </ptLine>
+    <ptLine id="5401998" name="Metroplus Línea 2: Parque Aranjuez → U. de M." line="2" type="bus" vClass="bus" color="101,169,172" completeness="0.50" missingAfter="1">
+        <route edges="362477589#1 362477589#2 -362477587#9 -362477587#6 -362477587#5 -362477587#4 -362477587#1 -362477587#0 1229646276#1 1229646277#0 529660472#1 182956545#0 182956545#1 571813490#0 571813490#1 571813490#2 571813490#3 571813490#4 571813490#5 571813490#6 571813490#7 1019221752#1 1019221752#2 1019221752#3 1019221751#1 1019221753#0 1019221753#1 1019221750#1 1065802447#0 1065802447#1 1065802447#2 932532429#0 932532429#1 932532429#2 932532429#3 932532429#4 932532429#5 932532429#6 932532429#7 932532429#8 932532429#9 932532429#10 932532429#11 932532429#13 932532429#14 932532429#15 932532429#17 932532429#18 932532429#19 932532429#20 932532429#21 932532429#22 932532429#23 1019222189 932914930#0 932914930#3 932914930#4 932914930#5 1020415215"/>
+        <busStop id="5144879974" name="Palos Verdes"/>
+    </ptLine>
+    <ptLine id="6491411" name="Línea T-A: Oriente → San Antonio" line="T-A" type="tram" vClass="tram" color="0,153,51" completeness="1.00">
+        <route edges="933924267#0 933924267#1 933924267#2 933924267#3 933924267#6 933924267#7 933924267#8 933924267#9 933924267#10 933924267#11 933924267#14 933924267#15 933924267#16 933924267#17 933924267#18 933924267#19 933924267#20 933924267#21 933924267#22 933924267#23 933933954#1 933933954#6 933933954#9 933933954#10 933933954#11 933933954#12 933933954#15 933933954#17"/>
+        <busStop id="4100629928" name="San Antonio"/>
+    </ptLine>
+    <ptLine id="6491412" name="Línea T-A: San Antonio → Oriente" line="T-A" type="tram" vClass="tram" color="0,153,51" completeness="1.00">
+        <route edges="1427513655 932532449#2 932532449#5 932532449#6 932532449#7 932532449#8 932532449#11 932532449#16 932532449#17 932532449#18 932532449#20 932532449#21 932532449#22 932532449#23 932532449#24 932532449#25 933924264#1 933924264#4 933924264#5 933924264#6 933924264#7 933924264#8 933924264#9 933924264#12 933924264#13 933924264#14 933924264#15"/>
+        <busStop id="4351098851" name="San Antonio"/>
+    </ptLine>
+    <ptLine id="6659991" name="Ruta C3-001: Santa Gema -&gt; La Mota -&gt; Aguacatala" line="C3-001" type="bus" vClass="bus" completeness="0.00" missingAfter="20"/>
+    <ptLine id="7520917" name="Ruta C3-001: Aguacatala -&gt; La Mota -&gt; Santa Gema" line="C3-001" type="bus" vClass="bus" completeness="0.03" missingBefore="29">
+        <route edges="576504528#0 576504528#1 576504528#2 1020398539#0 1020398539#1 576504565#0 576504565#1 576504565#2 576504565#3 576504565#4 576504565#5 576504565#6 576504565#7 576504565#8 576504565#9 576504565#10"/>
+        <busStop id="8417220584" name="Cra 81 #32FF-12"/>
+    </ptLine>
+</ptLines>

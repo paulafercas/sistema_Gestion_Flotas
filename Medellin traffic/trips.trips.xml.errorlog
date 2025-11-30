@@ -1,0 +1,18 @@
+Warning: At actuated tlLogic 'cluster_10308833783_10308833784_10308833785_10308833788_#10more', actuated phase 4 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10308833783_10308833784_10308833785_10308833788_#10more', linkIndex 9,10,11,26,27,28,29 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10308854267_10308854268_10308854269_10308854271_#15more', linkIndex 15,16,17,18,19,20,21 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10549041528_10549041579_2281073210_360396504_#6more', linkIndex 8 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10550750621_321926345_365785952_5504146391_#4more', linkIndex 0,6,7,8,12,13,14 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10550750624_10550750625_10550750627_10550750628_#9more', linkIndex 2,3,4,29,30,31 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10704763664_10704763665_10704763685_1082091541_#3more', actuated phase 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10704763756_10704763757_1072146126_1842193768_#4more', actuated phase 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10725849831_10725849834_10725849836_10725849837_#23more', actuated phase 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10725849854_10725849855_10725849860_10725849861_#4more', actuated phase 2 has no controlling detector.
+Warning: Program '0' at tlLogic 'joinedS_10716288865_10716288866_358097568_358098858_#8more' is incompatible with logic at junction 'cluster_7392880010_8644394449' (mutual conflict between link indices 1,15 tl indices 57,71 phase 0).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
+Warning: Program '0' at tlLogic 'joinedS_7380719185_cluster_10554784215_10554784218_10554784221_1560013895_#10more' is incompatible with logic at junction 'cluster_10554784215_10554784218_10554784221_1560013895_#10more' (mutual conflict between link indices 1,48 tl indices 5,52 phase 4).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
+Warning: 10 total messages of type: At actuated tlLogic '%', actuated phase % has no controlling detector.
+Warning: 41 total messages of type: At actuated tlLogic '%', linkIndex % has no controlling detector.
