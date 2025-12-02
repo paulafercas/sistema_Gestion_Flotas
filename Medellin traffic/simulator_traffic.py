@@ -123,13 +123,13 @@ class VehicleDeamon(traci.StepListener):
 
 
 #---------Definicion de constantes---------------
-SUMO_CONFIG = "osm.sumocfg.xml"
+SUMO_CONFIG = r"Medellin traffic\osm.sumocfg.xml"
 VEH_ID_START = 1
-VEH_ID_END = 12
+VEH_ID_END = 20 
 VEH_IDS = [f"veh_{i}" for i in range(VEH_ID_START, VEH_ID_END+1)]
 TYPE_ID = "pt_bus" 
 COLOR = (0, 0, 255, 255)
-dic_origen, dic_via, dic_destino= read_route_vehicle('osm_pt.rou.xml', VEH_ID_START, VEH_ID_END)
+dic_origen, dic_via, dic_destino= read_route_vehicle(r'Medellin traffic\osm_pt.rou.xml', VEH_ID_START, VEH_ID_END)
 
 #-----------main---------------
 def main():

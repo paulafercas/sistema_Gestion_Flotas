@@ -110,4 +110,20 @@
         <param key="completeness" value="0.03"/>
         <param key="name" value="Ruta C3-001: Aguacatala -&gt; La Mota -&gt; Santa Gema"/>
     </flow>
+
+    <trip id="veh_13" type="pt_bus" depart="0.00" color="0,255,13" from="362477589#1" to="-362477587#9" via="362477589#2"/>
+    
+    <trip id="veh_14" type="pt_bus" depart="60.00" color="0,255,13" from="571809760#3" to="46594805#3" via="46594805#2"/>
+    
+    <trip id="veh_15" type="pt_bus" depart="120.00" color="0,255,13" from="933924267#0" to="933924267#1"/>
+    
+    <trip id="veh_16" type="pt_bus" depart="180.00" color="0,255,13" from="105564897#0" to="105564897#1"/>
+
+    <trip id="veh_17" type="pt_bus" depart="240.00" color="0,255,13" from="46594805#4" to="46594805#8" via="46594805#5"/>
+
+    <trip id="veh_18" type="pt_bus" depart="300.00" color="0,255,13" from="1019221753#1" to="1229646279#0" via="1019221750#1"/>
+
+    <trip id="veh_19" type="pt_bus" depart="360.00" color="0,255,13" from="1019221753#0" to="1019221750#1" via="1019221753#1"/>
+
+    <trip id="veh_20" type="pt_bus" depart="420.00" color="0,255,13" from="363162718#0" to="363162718#3" via="363162718#1"/>
 </routes>
