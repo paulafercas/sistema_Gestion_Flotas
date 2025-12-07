@@ -3,7 +3,10 @@ import sys
 import traci
 import xml.etree.ElementTree as ET
 import json
-import paho.mqtt.client as mqtt # Nueva importación
+from datetime import datetime, timezone
+import paho.mqtt.client as mqtt
+import ssl
+import time
 
 #--------Lectura de egde--------------
 def read_route_vehicle(dir_file, veh_id_start, veh_id_end):
@@ -143,6 +146,7 @@ MQTT_TOPIC = "fleet/sumo/trafficdata"
 ROOT_CA = r"Medellin traffic\AmazonRootCA1.pem" # Certificado raíz de Amazon (AmazonRootCA1.pem)
 CERT_FILE = r"Medellin traffic\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-certificate.pem.crt" # Certificado de tu "Thing"
 PRIVATE_KEY = r"Medellin traffic\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-private.pem.key" # Clave privada de tu "Thing"
+PUBLISH_INTERVAL = 10  # segundos
 
 # ------------------------------------------------------------------
 # ... (El resto de tus funciones: read_route_vehicle, calculate_route, installVehicleDeamon, VehicleDeamon) ...
@@ -151,7 +155,7 @@ PRIVATE_KEY = r"Medellin traffic\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47
 # --- Funciones de Conexión MQTT ---
 def connect_mqtt():
     """Configura y conecta el cliente MQTT a AWS IoT Core."""
-    client = mqtt.Client(client_id="SUMO_Client_01")
+    client = mqtt.Client(client_id="simulator_master")
     
     # Configuración de TLS con certificados de AWS
     try:
@@ -170,62 +174,69 @@ def connect_mqtt():
         print(f"Error al conectar con MQTT: {e}")
         return None
 
-def collect_and_publish_data(client, veh_id, topic):
-    """Recolecta los datos de TraCI, los formatea y los envía por MQTT."""
-    
-    # 1. Obtener la hora actual de la simulación
-    sim_time = traci.simulation.getTime()
-    
-    try:
-        # 2. Obtener datos de TraCI
-        # Posición (X, Y)
-        x, y = traci.vehicle.getPosition(veh_id)
-        # Conversión a Latitud y Longitud (esencial para mapeo)
-        lon, lat = traci.simulation.convertGeo(x, y) 
-        
-        # Velocidad (m/s)
-        speed_ms = traci.vehicle.getSpeed(veh_id)
-        # Dirección de movimiento (Heading en grados)
-        heading_deg = traci.vehicle.getAngle(veh_id)
-        
-        # ⚠️ Datos Simulados (RPM, Temperature) ⚠️
-        # TraCI no proporciona RPM ni temperatura directamente. 
-        # Debemos simular o inferir estos valores:
-        
-        # RPM (Estimación simple: proporcional a la velocidad)
-        rpm_sim = speed_ms * 60 * 3.5 # Factor de escalado de ejemplo
-        
-        # Temperatura (Fijo o basado en algún evento)
-        temp_sim = 85.5 if speed_ms > 0 else 75.0 # Ejemplo simple: más caliente si está en movimiento
+#---------------Funcion de Extraccion---------------
+def get_vehicle_data(vehicle_id):
+    # --- Datos reales desde SUMO ---
+    x, y = traci.vehicle.getPosition(vehicle_id)
+    lat, lon = traci.simulation.convertGeo(x, y, fromGeo=False)
+    ang = traci.vehicle.getAngle(vehicle_id)
+    speed_kmh = traci.vehicle.getSpeed(vehicle_id) * 3.6
+    # --- Simulaciones de telemetría ---
+    rpm = int(speed_kmh * 60)  # Simulación
+    consumo_fuel = round(speed_kmh * 0.02, 2)  # L/h ficticio
+    engine_temp = round(70 + speed_kmh * 0.5, 2)
+    timestamp = datetime.now(timezone.utc).isoformat()
+    distance_m = traci.vehicle.getDistance(vehicle_id)
+    # Construimos un paquete centralizado
+    data = {
+        "device_id": vehicle_id,
+        "timestamp": timestamp,
+        "lat": lat,
+        "lon": lon,
+        "ang": ang,
+        "distance_m": distance_m,
+        "speed": round(speed_kmh, 2),
+        "rpm": rpm,
+        "fuel_consumption": consumo_fuel,
+        "engine_temperature": engine_temp,
+    }
 
-        # 3. Formatear la carga útil (Payload)
-        payload = {
-            "device_id": veh_id,
-            "timestamp": int(sim_time), # Tiempo de la simulación en segundos
-            "lat": round(lat, 6),
-            "lon": round(lon, 6),
-            "speed_kmh": round(speed_ms * 3.6, 2), # Convertido a km/h
-            "rpm": round(rpm_sim, 2),
-            "temperature_C": round(temp_sim, 2),
-            "heading_deg": round(heading_deg, 2)
-        }
-        
-        # 4. Publicar en el tópico MQTT
-        client.publish(topic, json.dumps(payload), qos=1)
-        
-    except traci.exceptions.TraCIException as e:
-        # Esto ocurre si el vehículo aún no ha sido insertado o ya salió (ArrivedIDList)
-        # print(f"Advertencia TraCI para {veh_id}: {e}")
-        pass
-    except Exception as e:
-        print(f"Error inesperado al publicar datos de {veh_id}: {e}")
+    return data
+
+#-------------Envio MQTT------------------------
+def publish_vehicle_data(data, client):
+    vehicle_id = data["device_id"]
+    # ----- Mensaje GPS -----
+    gps_msg = {
+        "device_id": vehicle_id,
+        "timestamp": data["timestamp"],
+        "lat": data["lat"],
+        "lon": data["lon"],
+        "ang": data["ang"],
+    }
+    # ----- Mensaje Telemetría -----
+    telemetry_msg = {
+        "device_id": vehicle_id,
+        "timestamp": data["timestamp"],
+        "speed": data["speed"],
+        "distance_m" : data["distance_m"],
+        "rpm": data["rpm"],
+        "fuel_consumption": data["fuel_consumption"],
+        "engine_temperature": data["engine_temperature"],
+
+    }
+    topic_gps = f"fleet/{vehicle_id}/gps"
+    topic_tel = f"fleet/{vehicle_id}/telemetry"
+    client.publish(topic_gps, json.dumps(gps_msg))
+    client.publish(topic_tel, json.dumps(telemetry_msg))
+    print(f"[{vehicle_id}] Publicado GPS + Telemetría")
 
 #-----------main---------------
 def main():
     mqtt_client = None # Variable para almacenar el cliente MQTT
 
     try:
-                  # --- Parte de AWS MQTT ---
+        # --- Parte de AWS MQTT ---
         print("Intentando conectar a AWS IoT Core...")
         # 1. CONECTAR: Llama a tu función para conectar y obtener el cliente
         mqtt_client = connect_mqtt() 
@@ -234,24 +245,24 @@ def main():
         sumoCmd = ["sumo-gui", "-c", SUMO_CONFIG, "--start"]
         traci.start(sumoCmd)
         
-                #1. Instalacion de funcion DAEMON y calculo de ruta
+        #1. Instalacion de funcion DAEMON y calculo de ruta
         for idx, veh_id in enumerate(VEH_IDS, start=1):
             route_id = f"route_{idx}"
             installVehicleDeamon(veh_id, route_id, TYPE_ID, COLOR, dic_origen[veh_id], dic_via[veh_id], dic_destino[veh_id])
   
-  
         #2. Bucle Simulación
+        last_send_timestamp = 0
         while traci.simulation.getMinExpectedNumber() > 0:
-            traci.simulationStep() # El Daemon se ejecuta aquí dentro automáticamente
-            current_time = traci.simulation.getTime()
-            # -------------------------------------------------------------------
-            # --- CÓDIGO DE RECOLECCIÓN Y ENVÍO DE DATOS (Integración clave) ---
-            # -------------------------------------------------------------------
-            # Solo publicamos cada 10 segundos 
-            if mqtt_client and current_time % 10 == 0: 
-                for veh_id in traci.vehicle.getIDList(): 
-                    # Llama a la función que extrae los datos y los envía al tópico MQTT
-                    collect_and_publish_data(mqtt_client, veh_id, MQTT_TOPIC)
+            traci.simulationStep()
+            # Publicar cada 10 segundos
+            now = time.time()
+            if now - last_send_timestamp >= PUBLISH_INTERVAL:
+                for vehicle_id in VEH_IDS:
+                    if vehicle_id not in traci.vehicle.getIDList():
+                        continue
+                    data = get_vehicle_data(vehicle_id)
+                    publish_vehicle_data(data, mqtt_client)
+                last_send_timestamp = now
             # -------------------------------------------------------------------
         
     except traci.exceptions.TraCIException as e:
