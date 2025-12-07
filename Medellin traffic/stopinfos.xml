@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-12-03T22:22:07.580699-05:00 by Eclipse SUMO GUI 1.25.0
+<!-- generated on 2025-12-06T21:04:49.343409-05:00 by Eclipse SUMO GUI 1.25.0
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -32,7 +32,7 @@
     </report>
 
     <traci_server>
-        <remote-port value="54943"/>
+        <remote-port value="57284"/>
     </traci_server>
 
     <gui_only>
@@ -68,5 +68,4 @@
     <stopinfo id="pt_tram_T-A:1.0" type="pt_tram" lane="1427513655_0" pos="25.00" parking="0" started="409.00" ended="439.00" delay="0.00" busStop="4351098851" initialPersons="0" loadedPersons="0" unloadedPersons="0" initialContainers="0" loadedContainers="0" unloadedContainers="0" blockedDuration="0.00"/>
     <stopinfo id="pt_subway_B:0.0" type="pt_subway" lane="105564897#1_0" pos="2368.44" parking="0" started="442.00" ended="470.00" delay="0.00" busStop="1215445793" initialPersons="0" loadedPersons="0" unloadedPersons="0" initialContainers="0" loadedContainers="0" unloadedContainers="0" blockedDuration="0.00"/>
     <stopinfo id="pt_subway_A:1.0" type="pt_subway" lane="182779999#1_0" pos="3701.86" parking="0" started="442.00" ended="472.00" delay="0.00" busStop="1211554021" initialPersons="0" loadedPersons="0" unloadedPersons="0" initialContainers="0" loadedContainers="0" unloadedContainers="0" blockedDuration="0.00"/>
-    <stopinfo id="pt_subway_B:1.0" type="pt_subway" lane="105540787_0" pos="3694.15" parking="0" started="468.00" ended="498.00" delay="0.00" busStop="8660247118" initialPersons="0" loadedPersons="0" unloadedPersons="0" initialContainers="0" loadedContainers="0" unloadedContainers="0" blockedDuration="0.00"/>
-    <stopinfo id="pt_subway_A:0.0" type="pt_subway" lane="34939281#1_0" pos="509.87" parking="0" started="499.00" ended="529.00" delay="0.00" busStop="267547778" initialPersons="0" loadedPersons="0" unloadedPersons="0" initialContainers="0" loadedContainers="0" unloadedConta
+</stops>

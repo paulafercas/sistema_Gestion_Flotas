@@ -223,7 +223,6 @@ def publish_vehicle_data(data, client):
         "rpm": data["rpm"],
         "fuel_consumption": data["fuel_consumption"],
         "engine_temperature": data["engine_temperature"],
-
     }
     topic_gps = f"fleet/{vehicle_id}/gps"
     topic_tel = f"fleet/{vehicle_id}/telemetry"
