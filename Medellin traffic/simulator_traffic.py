@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 import json
 from datetime import datetime, timezone
 import paho.mqtt.client as mqtt
-import ssl
+import random
 import time
 
 #--------Lectura de egde--------------
@@ -135,6 +135,12 @@ VEH_IDS = [f"veh_{i}" for i in range(VEH_ID_START, VEH_ID_END+1)]
 TYPE_ID = "pt_bus" 
 COLOR = (0, 0, 255, 255)
 dic_origen, dic_via, dic_destino= read_route_vehicle(r'Medellin traffic\osm_pt.rou.xml', VEH_ID_START, VEH_ID_END)
+dic_wear = {veh: {"speed": 0.0, "fuel_consumption": 1.0, "engine_temperature": 0.0,  
+            "time_steps": 0,  "phase": "wear"} for veh in VEH_IDS}
+WEAR_DURATION = 2      # pasos de simulación hasta desgaste máximo
+MAX_WEAR = { "speed": 15.5,  "fuel_consumption": 1.4, "engine_temperature": 25.5}  # km/h perdidos| L/h extra | km/h perdidos  °C extra
+WEAR_RATE = { k: v / WEAR_DURATION for k, v in MAX_WEAR.items() }
+NOISE_STD = { "speed": 0.8, "fuel_consumption": 0.15, "engine_temperature": 0.7 }
 
 
 #Definimos la conexión 
@@ -175,16 +181,38 @@ def connect_mqtt():
         return None
 
 #---------------Funcion de Extraccion---------------
+FUEL_IDLE = 0.6        # consumo en ralentí (L/h)
+FUEL_A = 0.012         # coef lineal velocidad (L/h por km/h)
+FUEL_B = 0.0009        # coef cuadrático velocidad (L/h por (km/h)^2)
+ACC_COEF = 0.5         # L/h añadido por (km/h)/s de aceleración positiva
+# Estructura para estado temporal por vehículo (para calcular aceleración)
+dic_state = {veh: {"last_speed": 0.0} for veh in VEH_IDS}
+
 def get_vehicle_data(vehicle_id):
     # --- Datos reales desde SUMO ---
     x, y = traci.vehicle.getPosition(vehicle_id)
     lat, lon = traci.simulation.convertGeo(x, y, fromGeo=False)
     ang = traci.vehicle.getAngle(vehicle_id)
-    speed_kmh = traci.vehicle.getSpeed(vehicle_id) * 3.6
+    speed_real = traci.vehicle.getSpeed(vehicle_id) * 3.6
+    speed_kmh = max(0, speed_real - dic_wear[vehicle_id]["speed"])
+
+    # --- Aceleración estimada ---
+    prev_speed = dic_state.setdefault(vehicle_id, {}).get("last_speed", 0.0)
+    dt = max(1.0, PUBLISH_INTERVAL)  # segundos entre mediciones (evita división por 0)
+    accel = (speed_kmh - prev_speed) / dt            # km/h por segundo (aprox.)
+    dic_state[vehicle_id]["last_speed"] = speed_kmh
+    # --- Modelo de consumo (L/h) ---
+    # componente básica: idle + lineal + cuadrática
+    fuel_base = FUEL_IDLE + FUEL_A * speed_kmh + FUEL_B * (speed_kmh ** 2)
+    # penalizar aceleraciones positivas (consumo extra por aceleración)
+    accel_term = ACC_COEF * max(0.0, accel)
+    # sumar desgaste (dic_wear almacena L/h extra aproximado)
+    wear_extra = dic_wear[vehicle_id].get("fuel_consumption", 0.0)
+    consumo_fuel = fuel_base + accel_term*wear_extra
+
     # --- Simulaciones de telemetría ---
-    rpm = int(speed_kmh * 60)  # Simulación
-    consumo_fuel = round(speed_kmh * 0.02, 2)  # L/h ficticio
-    engine_temp = round(70 + speed_kmh * 0.5, 2)
+    rpm = int(speed_kmh * 60)  # Simulación simple
+    engine_temp = round(70 + speed_kmh * 0.5, 2) + dic_wear[vehicle_id]["engine_temperature"]
     timestamp = datetime.now(timezone.utc).isoformat()
     distance_m = traci.vehicle.getDistance(vehicle_id)
     # Construimos un paquete centralizado
@@ -197,11 +225,27 @@ def get_vehicle_data(vehicle_id):
         "distance_m": distance_m,
         "speed": round(speed_kmh, 2),
         "rpm": rpm,
-        "fuel_consumption": consumo_fuel,
-        "engine_temperature": engine_temp,
+        "fuel_consumption": round(consumo_fuel, 2),
+        "engine_temperature": round(engine_temp, 2),
     }
-
     return data
+
+
+def update_wear(vehicle_id):
+    w = dic_wear[vehicle_id]
+    w["time_steps"] += 1
+    if w["phase"] == "wear":
+        # Desgaste progresivo
+        for k in ["speed", "fuel_consumption", "engine_temperature"]:
+            w[k] += WEAR_RATE[k]
+        # Cambio de fase
+        if w["time_steps"] >= WEAR_DURATION:
+            w["phase"] = "degraded"
+    elif w["phase"] == "degraded":
+        # Mantiene desgaste base + ruido pequeño
+        for k in ["speed", "fuel_consumption", "engine_temperature"]:
+            noise = random.gauss(0, NOISE_STD[k])
+            w[k] = max(0, min(w[k] + noise, MAX_WEAR[k]))
 
 #-------------Envio MQTT------------------------
 def publish_vehicle_data(data, client):
@@ -259,6 +303,7 @@ def main():
                 for vehicle_id in VEH_IDS:
                     if vehicle_id not in traci.vehicle.getIDList():
                         continue
+                    update_wear(vehicle_id)
                     data = get_vehicle_data(vehicle_id)
                     publish_vehicle_data(data, mqtt_client)
                 last_send_timestamp = now
