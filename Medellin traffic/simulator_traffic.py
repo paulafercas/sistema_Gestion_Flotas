@@ -185,7 +185,7 @@ def get_vehicle_data(vehicle_id):
     rpm = int(speed_kmh * 60)  # Simulación
     consumo_fuel = round(speed_kmh * 0.02, 2)  # L/h ficticio
     engine_temp = round(70 + speed_kmh * 0.5, 2)
-    timestamp = datetime.now(timezone.utc).isoformat()
+    timestamp = timestamp = int(datetime.now(timezone.utc).timestamp())
     distance_m = traci.vehicle.getDistance(vehicle_id)
     # Construimos un paquete centralizado
     data = {
