@@ -149,9 +149,9 @@ NOISE_STD = { "speed": 0.8, "fuel_consumption": 0.15, "engine_temperature": 0.7 
 AWS_ENDPOINT = "ag6t3wyqi6umd-ats.iot.us-east-2.amazonaws.com" # Ej: a1b2c3d4e5f6g7.iot.us-east-1.amazonaws.com
 MQTT_PORT = 8883 # Puerto seguro TLS
 MQTT_TOPIC = "fleet/sumo/trafficdata"
-ROOT_CA = r"Medellin traffic\AmazonRootCA1.pem" # Certificado raíz de Amazon (AmazonRootCA1.pem)
-CERT_FILE = r"Medellin traffic\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-certificate.pem.crt" # Certificado de tu "Thing"
-PRIVATE_KEY = r"Medellin traffic\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-private.pem.key" # Clave privada de tu "Thing"
+ROOT_CA = r"Medellin traffic\keys\AmazonRootCA1.pem" # Certificado raíz de Amazon (AmazonRootCA1.pem)
+CERT_FILE = r"Medellin traffic\keys\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-certificate.pem.crt" # Certificado de tu "Thing"
+PRIVATE_KEY = r"Medellin traffic\keys\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-private.pem.key" # Clave privada de tu "Thing"
 PUBLISH_INTERVAL = 10  # segundos
 
 # ------------------------------------------------------------------
