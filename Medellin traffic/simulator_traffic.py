@@ -181,6 +181,7 @@ def connect_mqtt():
         return None
 
 #---------------Funcion de Extraccion---------------
+# Mejora modelado consumo (L/h)
 FUEL_IDLE = 0.6        # consumo en ralentí (L/h)
 FUEL_A = 0.012         # coef lineal velocidad (L/h por km/h)
 FUEL_B = 0.0009        # coef cuadrático velocidad (L/h por (km/h)^2)
@@ -201,13 +202,14 @@ def get_vehicle_data(vehicle_id):
     dt = max(1.0, PUBLISH_INTERVAL)  # segundos entre mediciones (evita división por 0)
     accel = (speed_kmh - prev_speed) / dt            # km/h por segundo (aprox.)
     dic_state[vehicle_id]["last_speed"] = speed_kmh
+
     # --- Modelo de consumo (L/h) ---
     # componente básica: idle + lineal + cuadrática
     fuel_base = FUEL_IDLE + FUEL_A * speed_kmh + FUEL_B * (speed_kmh ** 2)
     # penalizar aceleraciones positivas (consumo extra por aceleración)
     accel_term = ACC_COEF * max(0.0, accel)
     # sumar desgaste (dic_wear almacena L/h extra aproximado)
-    wear_extra = dic_wear[vehicle_id].get("fuel_consumption", 0.0)
+    wear_extra = dic_wear[vehicle_id].get("fuel_consumption")
     consumo_fuel = fuel_base + accel_term*wear_extra
 
     # --- Simulaciones de telemetría ---
@@ -229,7 +231,6 @@ def get_vehicle_data(vehicle_id):
         "engine_temperature": round(engine_temp, 2),
     }
     return data
-
 
 def update_wear(vehicle_id):
     w = dic_wear[vehicle_id]
