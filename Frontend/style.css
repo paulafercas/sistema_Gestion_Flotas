@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f9;
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.content-area {
+    flex-grow: 1;
+    display: grid;
+    grid-template-areas: 
+        "search"
+        "map"
+        "card";
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    padding: 10px;
+}
+#map {
+    grid-area: map;
+    height: 100%;
+    min-height: 400px; /* Asegura que el mapa se vea */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.search-panel {
+    grid-area: search;
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+.search-panel input, .search-panel button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.search-panel button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.data-card {
+    grid-area: card;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #007bff;
+}
+.hidden {
+    display: none;
+}

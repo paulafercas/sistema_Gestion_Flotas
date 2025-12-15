@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Flotas - Público</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' rel='stylesheet' />
+    <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+    
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1557.0.min.js"></script> 
+</head>
+<body>
+    <div id="app">
+        <header class="navbar">
+            <h1>Sistema de Monitoreo de Flotas </h1>
+        </header>
+        <main class="content-area">
+            
+            <div class="search-panel">
+                <input type="text" id="vehicle-input" placeholder="Buscar ID (ej: veh_1 a veh_20)" value="veh_1">
+                <button id="search-btn">🔍 Mostrar Ubicación</button>
+            </div>
+            
+            <div id="map"></div>
+            
+            <div id="data-card" class="data-card hidden">
+                <h3>Vehículo: <span id="card-device-id"></span></h3>
+                <p>🏠 **Dirección:** <span id="card-address"></span></p> 
+                <p>📍 **Coordenadas:** <span id="card-lat-lon"></span></p>
+                <p>🧭 **Ángulo:** <span id="card-ang"></span>°</p>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
