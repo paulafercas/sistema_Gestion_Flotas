@@ -148,7 +148,6 @@ NOISE_STD = { "speed": 0.8, "fuel_consumption": 0.15, "engine_temperature": 0.7 
 # ⚠️ REEMPLAZA ESTOS VALORES CON TUS CREDENCIALES DE AWS IOT CORE ⚠️
 AWS_ENDPOINT = "ag6t3wyqi6umd-ats.iot.us-east-2.amazonaws.com" # Ej: a1b2c3d4e5f6g7.iot.us-east-1.amazonaws.com
 MQTT_PORT = 8883 # Puerto seguro TLS
-MQTT_TOPIC = "fleet/sumo/trafficdata"
 ROOT_CA = r"Medellin traffic\keys\AmazonRootCA1.pem" # Certificado raíz de Amazon (AmazonRootCA1.pem)
 CERT_FILE = r"Medellin traffic\keys\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-certificate.pem.crt" # Certificado de tu "Thing"
 PRIVATE_KEY = r"Medellin traffic\keys\1b4263579a7b988b3c204262f1c36d7f84f59d5d9f4da47364c70cf045107192-private.pem.key" # Clave privada de tu "Thing"
@@ -158,12 +157,20 @@ PUBLISH_INTERVAL = 10  # segundos
 # ... (El resto de tus funciones: read_route_vehicle, calculate_route, installVehicleDeamon, VehicleDeamon) ...
 # ------------------------------------------------------------------
 
+def on_connect(client, userdata, flags, rc):
+    print("MQTT on_connect rc =", rc)
+
+def on_publish(client, userdata, mid):
+    print("Mensaje publicado, mid =", mid)
+
+def on_log(client, userdata, level, buf):
+    print("MQTT LOG:", buf)
+
 # --- Funciones de Conexión MQTT ---
 def connect_mqtt():
     """Configura y conecta el cliente MQTT a AWS IoT Core."""
     client = mqtt.Client(client_id="simulator_master")
-    
-    # Configuración de TLS con certificados de AWS
+    #Configuración de TLS con certificados de AWS
     try:
         client.tls_set(
             ca_certs=ROOT_CA,
@@ -196,13 +203,11 @@ def get_vehicle_data(vehicle_id):
     ang = traci.vehicle.getAngle(vehicle_id)
     speed_real = traci.vehicle.getSpeed(vehicle_id) * 3.6
     speed_kmh = max(0, speed_real - dic_wear[vehicle_id]["speed"])
-
     # --- Aceleración estimada ---
     prev_speed = dic_state.setdefault(vehicle_id, {}).get("last_speed", 0.0)
     dt = max(1.0, PUBLISH_INTERVAL)  # segundos entre mediciones (evita división por 0)
     accel = (speed_kmh - prev_speed) / dt            # km/h por segundo (aprox.)
     dic_state[vehicle_id]["last_speed"] = speed_kmh
-
     # --- Modelo de consumo (L/h) ---
     # componente básica: idle + lineal + cuadrática
     fuel_base = FUEL_IDLE + FUEL_A * speed_kmh + FUEL_B * (speed_kmh ** 2)
@@ -211,7 +216,6 @@ def get_vehicle_data(vehicle_id):
     # sumar desgaste (dic_wear almacena L/h extra aproximado)
     wear_extra = dic_wear[vehicle_id].get("fuel_consumption")
     consumo_fuel = fuel_base + accel_term*wear_extra
-
     # --- Simulaciones de telemetría ---
     rpm = int(speed_kmh * 60)  # Simulación simple
     engine_temp = round(70 + speed_kmh * 0.5, 2) + dic_wear[vehicle_id]["engine_temperature"]
@@ -278,7 +282,6 @@ def publish_vehicle_data(data, client):
 #-----------main---------------
 def main():
     mqtt_client = None # Variable para almacenar el cliente MQTT
-
     try:
         # --- Parte de AWS MQTT ---
         print("Intentando conectar a AWS IoT Core...")
@@ -309,13 +312,12 @@ def main():
                     publish_vehicle_data(data, mqtt_client)
                 last_send_timestamp = now
             # -------------------------------------------------------------------
-        
     except traci.exceptions.TraCIException as e:
         print(f"Error de TraCI en main: {e}")
     except Exception as e:
         print(f"Error inesperado en main: {e}")
     finally:
-        # 3. DESCONEXIÓN: Asegurar que el cliente MQTT se cierre limpiamente
+        #3. DESCONEXIÓN: Asegurar que el cliente MQTT se cierre limpiamente
         if mqtt_client:
             mqtt_client.loop_stop()
             mqtt_client.disconnect()
