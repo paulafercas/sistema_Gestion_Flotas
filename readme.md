@@ -1,9 +1,9 @@
-# README — Plataforma de Gestión de Flotas (telemetría, predicción y alertas)
+# Plataforma de Gestión de Flotas (telemetría, predicción y alertas)
 
 **Descripción del proyecto**  
 Construir una plataforma de gestión de flotas vehiculares con tracking GPS en tiempo real, optimización de rutas, telemetría del vehículo, alertas de mantenimiento predictivo y dashboards de KPIs operacionales.
 
-## Resumen del flujo (implementado en este repo)
+## Resumen del flujo 
 1. **Simulación (20 vehículos)**  
    - La simulación de 20 vehículos se genera con **SUMO** y se publica por **MQTT** usando `simulator_traffic.py` (carpeta `Medellin_traffic/`).
 2. **Recepción (AWS IoT Core)**  
@@ -109,7 +109,6 @@ SELECT * FROM 'fleet/telemetry'
 4. Probar el endpoint con una muestra de entrada.
 
 ---
-
 ## Archivos de código relevantes y ubicación
 - Simulador & SUMO: `Medellin_traffic/simulator_traffic.py`
 - Entrenamiento y dataset: `ModelML/`
