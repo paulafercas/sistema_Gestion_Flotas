@@ -82,48 +82,48 @@
         <param key="completeness" value="0.38"/>
         <param key="name" value="Metro Línea A: Dirección Niquía"/>
     </flow>
-    <flow id="pt_subway_A:1" type="pt_subway" begin="52.00" end="3652.00" period="600" line="A:1" route="pt_subway_A:1">
+    <flow id="pt_subway_A:1" type="pt_subway" begin="52.00" end="100000" period="600" line="A:1" route="pt_subway_A:1">
         <param key="completeness" value="0.38"/>
         <param key="name" value="Metro Línea A: Dirección La Estrella"/>
     </flow>
-    <flow id="pt_subway_B:0" type="pt_subway" begin="133.00" end="3733.00" period="600" line="B:0" route="pt_subway_B:0">
+    <flow id="pt_subway_B:0" type="pt_subway" begin="133.00" end="100000" period="600" line="B:0" route="pt_subway_B:0">
         <param key="completeness" value="0.86"/>
         <param key="name" value="Metro Línea B: Dirección San Javier"/>
     </flow>
-    <flow id="pt_subway_B:1" type="pt_subway" begin="165.00" end="3765.00" period="600" line="B:1" route="pt_subway_B:1">
+    <flow id="pt_subway_B:1" type="pt_subway" begin="165.00" end="100000" period="600" line="B:1" route="pt_subway_B:1">
         <param key="completeness" value="0.86"/>
         <param key="name" value="Metro Línea B: Dirección San Antonio"/>
     </flow>
-    <flow id="pt_bus_2:0" type="pt_bus" begin="253.00" end="3853.00" period="600" line="2:0" route="pt_bus_2:0">
+    <flow id="pt_bus_2:0" type="pt_bus" begin="253.00" end="100000" period="600" line="2:0" route="pt_bus_2:0">
         <param key="completeness" value="0.50"/>
         <param key="name" value="Metroplus Línea 2: Parque Aranjuez → U. de M."/>
     </flow>
-    <flow id="pt_tram_T-A:0" type="pt_tram" begin="383.00" end="3983.00" period="600" line="T-A:0" route="pt_tram_T-A:0">
+    <flow id="pt_tram_T-A:0" type="pt_tram" begin="383.00" end="100000" period="600" line="T-A:0" route="pt_tram_T-A:0">
         <param key="completeness" value="1.00"/>
         <param key="name" value="Línea T-A: Oriente → San Antonio"/>
     </flow>
-    <flow id="pt_tram_T-A:1" type="pt_tram" begin="406.00" end="4006.00" period="600" line="T-A:1" route="pt_tram_T-A:1">
+    <flow id="pt_tram_T-A:1" type="pt_tram" begin="406.00" end="100000" period="600" line="T-A:1" route="pt_tram_T-A:1">
         <param key="completeness" value="1.00"/>
         <param key="name" value="Línea T-A: San Antonio → Oriente"/>
     </flow>
-    <flow id="pt_bus_C3-001:1" type="pt_bus" begin="535.00" end="4135.00" period="600" line="C3-001:1" route="pt_bus_C3-001:1">
+    <flow id="pt_bus_C3-001:1" type="pt_bus" begin="535.00" end="100000" period="600" line="C3-001:1" route="pt_bus_C3-001:1">
         <param key="completeness" value="0.03"/>
         <param key="name" value="Ruta C3-001: Aguacatala -&gt; La Mota -&gt; Santa Gema"/>
     </flow>
 
-    <trip id="veh_13" type="pt_bus" depart="0.00" color="0,255,13" from="362477589#1" to="-362477587#9" via="362477589#2"/>
+    <trip id="veh_13" type="pt_bus" depart="0.00" color="0,255,13" from="362477589#1" to="-362477587#9" via="31965650#3"/>
     
-    <trip id="veh_14" type="pt_bus" depart="0.00" color="0,255,13" from="571809760#3" to="46594805#3" via="46594805#2"/>
+    <trip id="veh_14" type="pt_bus" depart="0.00" color="0,255,13" from="571809760#3" to="46594805#3" via="31965650#3"/>
     
-    <trip id="veh_15" type="pt_bus" depart="0.00" color="0,255,13" from="933924267#0" to="933924267#1"/>
+    <trip id="veh_15" type="pt_bus" depart="0.00" color="0,255,13" from="-65063644" to="-571475529" via="31965650#3"/>
     
-    <trip id="veh_16" type="pt_bus" depart="0.00" color="0,255,13" from="105564897#0" to="105564897#1"/>
+    <trip id="veh_16" type="pt_bus" depart="0.00" color="0,255,13" from="170415759#5" to="170415759#3" via="31965650#3"/>
 
-    <trip id="veh_17" type="pt_bus" depart="0.00" color="0,255,13" from="46594805#4" to="46594805#8" via="46594805#5"/>
+    <trip id="veh_17" type="pt_bus" depart="0.00" color="0,255,13" from="46594805#4" to="46594805#8" via="31965650#3"/>
 
-    <trip id="veh_18" type="pt_bus" depart="0.00" color="0,255,13" from="1019221753#1" to="1229646279#0" via="1019221750#1"/>
+    <trip id="veh_18" type="pt_bus" depart="0.00" color="0,255,13" from="1019221753#1" to="1229646279#0" via="31965650#3"/>
 
-    <trip id="veh_19" type="pt_bus" depart="0.00" color="0,255,13" from="1019221753#0" to="1019221750#1" via="1019221753#1"/>
+    <trip id="veh_19" type="pt_bus" depart="0.00" color="0,255,13" from="1019221753#0" to="1019221750#1" via="31965650#3"/>
 
-    <trip id="veh_20" type="pt_bus" depart="0.00" color="0,255,13" from="363162718#0" to="363162718#3" via="363162718#1"/>
+    <trip id="veh_20" type="pt_bus" depart="0.00" color="0,255,13" from="363162718#0" to="363162718#3" via="31965650#3"/>
 </routes>
