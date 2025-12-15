@@ -98,22 +98,12 @@ SELECT * FROM 'fleet/telemetry'
 - Alternativa: puedes invocar la Lambda ad-hoc tras cada particionado; en este diseño se usa el trigger periódico para agregación por ventana de 4 minutos.
 
 ---
-
-## SageMaker: subir y desplegar el modelo
-1. Entrena localmente el modelo XGBoost con los scripts en `ModelML/` (ej.: `train_xgboost.py`).
-2. Guarda artefactos (modelo) y sube a S3.
-3. Usa el notebook `Sakemaker/register_model.ipynb` para:
-   - Registrar el `ModelPackage`
-   - Crear el `EndpointConfig`
-   - Crear el `Endpoint` (nombre: valor para `SAGEMAKER_ENDPOINT`).
-4. Probar el endpoint con una muestra de entrada.
-
----
 ## Archivos de código relevantes y ubicación
 - Simulador & SUMO: `Medellin_traffic/simulator_traffic.py`
 - Entrenamiento y dataset: `ModelML/`
 - Notebook de registro (SageMaker): `Sakemaker`
 - Lambdas: `functionLambda/`
+- Frontend: `Frontend/`
 
 ---
 
