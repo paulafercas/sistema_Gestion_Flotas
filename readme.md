@@ -47,7 +47,7 @@ Asegúrate de configurar estos valores como **variables de entorno** en cada fun
    ```
 4. Ejecuta la simulación (ejemplo):  
    ```bash
-   python Medellin_traffic/simulator_traffic.py --config Medellin_traffic/sumo_config/simulation.sumocfg
+   python Medellin_traffic/simulator_traffic.py 
    ```
    El script debe publicar mensajes MQTT al **endpoint de AWS IoT** usando certificados o credenciales configuradas.
 
