@@ -1,4 +1,4 @@
-# Plataforma de Gestión de Flotas (telemetría, predicción y alertas)
+# Plataforma de Gestión de Flotas
 
 **Descripción del proyecto**  
 Construir una plataforma de gestión de flotas vehiculares con tracking GPS en tiempo real, optimización de rutas, telemetría del vehículo, alertas de mantenimiento predictivo y dashboards de KPIs operacionales.
