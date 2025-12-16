@@ -32,8 +32,6 @@ Estos nombres se usan en las Lambdas y scripts (usar como referencia/variables d
 - `DYNAMO_TABLE_ALERTS` — tabla para almacenar alertas
 - `SNS_TOPIC_ARN` — tópico para notificaciones por email
 
-Asegúrate de configurar estos valores como **variables de entorno** en cada función Lambda o en un archivo `.env` local para scripts.
-
 ---
 
 ## Pasos de despliegue (alto nivel)
