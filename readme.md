@@ -16,7 +16,7 @@ Construir una plataforma de gestión de flotas vehiculares con tracking GPS en t
 
 ## Arquitectura del sistema
 
-![Arquitectura de la plataforma](docs/architecture.png)
+![Arquitectura de la plataforma](docs/architecture.jpg)
 
 ---
 
