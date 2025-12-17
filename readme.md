@@ -1,4 +1,4 @@
-# Plataforma de Gestión de Flotas
+# SISTEMA DE GESTIÓN DE FLOTAS Y GPS TRACKING
 
 **Descripción del proyecto**  
 Construir una plataforma de gestión de flotas vehiculares con tracking GPS en tiempo real, optimización de rutas, telemetría del vehículo, alertas de mantenimiento predictivo y dashboards de KPIs operacionales.
@@ -10,13 +10,16 @@ Construir una plataforma de gestión de flotas vehiculares con tracking GPS en t
    - AWS IoT Core recibe los mensajes y, mediante **IoT Rules**, los envía a dos ramas principales:
      - **Rama de Alertas inmediatas** → `telemetry_alerts` (Lambda) → **SNS** (email) si se cumplen condiciones simples.
      - **Rama de Telemetría & Predicción** → `telemetry_to_s3` (Lambda) → **S3** (bucket `telemetry_alerts`) → procesamiento/particionado → metadatos en **Glue** (`telemetry_data`) y resultados de particionado en `fleet-partitions-results`.  
+    - **Rama de Localización y Tracking en tiempo real** →  
+       `IoTtoDynamoDBprocessor` (Lambda) → **DynamoDB** (`SUMO_vehicleData`) →  
+       `getVehicleData` (Lambda) → **AWS Location Service** → **AWS AppSync (API GraphQL)**.
 3. **Predicción de mantenimiento**  
    - `fleet_prediction_maintenance` (Lambda) consulta la tabla de Glue (`telemetry_data`) para obtener los últimos datos en intervalos de **4 minutos por vehículo** y llama al **endpoint de SageMaker** para predecir si requiere mantenimiento (modelo XGBoost entrenado localmente y registrado en SageMaker).  
    - Resultado: guarda la alerta en **DynamoDB** y publica una notificación por **SNS**.
 
 ## Arquitectura del sistema
 
-![Arquitectura de la plataforma](docs/architecture.jpg)
+![Arquitectura de la plataforma](docs/architecture.png)
 
 ---
 
@@ -32,6 +35,8 @@ Estos nombres se usan en las Lambdas y scripts (usar como referencia/variables d
 - `DYNAMO_TABLE_ALERTS` — tabla para almacenar alertas
 - `SNS_TOPIC_ARN` — tópico para notificaciones por email
 
+Asegúrate de configurar estos valores como **variables de entorno** en cada función Lambda o en un archivo `.env` local para scripts.
+
 ---
 
 ## Pasos de despliegue (alto nivel)
@@ -45,13 +50,13 @@ Estos nombres se usan en las Lambdas y scripts (usar como referencia/variables d
    ```
 4. Ejecuta la simulación (ejemplo):  
    ```bash
-   python Medellin_traffic/simulator_traffic.py 
+   python Medellin_traffic/simulator_traffic.py --config Medellin_traffic/sumo_config/simulation.sumocfg
    ```
    El script debe publicar mensajes MQTT al **endpoint de AWS IoT** usando certificados o credenciales configuradas.
 
 ### 2) Crear recursos AWS básicos
 - **S3**: crear buckets `telemetry_alerts` y `fleet-partitions-results`.
-- **DynamoDB**: crear tabla `alerts`.
+- **DynamoDB**: crear tabla `alerts` u `SUMO_vehicleData`.
 - **SNS**: crear tópico y suscribir correo(s) para recibir notificaciones.
 - **Glue**: crear base de datos `fleet_db` y tabla `telemetry_data` (o crear el crawler para inferir esquema).
 - **SageMaker**: registrar y desplegar endpoint con el modelo XGBoost (el notebook `Sakemaker/register_model.ipynb` guía esto).
@@ -67,7 +72,15 @@ Cada Lambda necesita un role con permisos mínimos. Ejemplo de permisos (simplif
 
 Puedes usar AWS SAM o CloudFormation para generar roles con políticas correctamente limitadas.
 
-### 4) Deploy de las Lambdas
+### 4) AWS Location Service + AWS AppSync (Visualización GPS en tiempo real)
+
+- Crea un Tracker en AWS Location Service para el seguimiento de los vehículos.
+- Crea un Place Index para resolver y enriquecer la información geográfica.
+- Crea una API GraphQL en AWS AppSync.
+- Integra AppSync con la Lambda getVehicleData como resolver.
+- Expón los datos de localización para su consumo desde dashboards, aplicaciones frontend o sistemas externos en tiempo real.
+
+### 5) Deploy de las Lambdas
 Opciones:
 - **Manual**: empaqueta el código de cada carpeta dentro de `functionLambda/` y súbelo a AWS Lambda (configura tiempo de ejecución, variables de entorno, rol).
 - **Automatizado**: usar **AWS SAM** o **Serverless Framework** (recomendado para reproducibilidad).
@@ -78,20 +91,20 @@ Variables importantes en cada Lambda:
 - `fleet-repair-partitions`: `S3_BUCKET_PARTITIONS`
 - `fleet_prediction_maintenance`: `GLUE_DATABASE`, `GLUE_TABLE`, `SAGEMAKER_ENDPOINT`, `DYNAMO_TABLE_ALERTS`, `SNS_TOPIC_ARN`
 
-### 5) Configurar IoT Core & IoT Rule(s)
+### 6) Configurar IoT Core & IoT Rule(s)
 - Crea una **IoT Thing** o confirma acceso desde tu script SUMO (cliente MQTT).
 - Genera y descarga certificados o usa autenticación por políticas.
 - Crea **IoT Rule** que, sobre el tópico de telemetría, ejecute:
-  - **Acción Lambda** → invocar `telemetry_alerts` (alertas inmediatas).
-  - **Acción Lambda** → invocar `telemetry_to_s3` (persistencia cruda).
-  *(Nota: la tercera ramificación pendiente, no se añade en este README.)*
+  - **Acción Lambda** → invocar `telemetry_alerts` 
+  - **Acción Lambda** → invocar `telemetry_to_s3` 
+  - **Acción Lambda** → invocar `IoTToDynamoDBProcessor` 
 
 Ejemplo simplificado de SQL para IoT Rule:
 ```sql
 SELECT * FROM 'fleet/telemetry'
 ```
 
-### 6) Orquestar predicciones cada 4 minutos
+### 7) Orquestar predicciones cada 4 minutos
 - Crea una regla de **EventBridge (Scheduled)** que dispare la Lambda `fleet_prediction_maintenance` cada 4 minutos.
 - Alternativa: puedes invocar la Lambda ad-hoc tras cada particionado; en este diseño se usa el trigger periódico para agregación por ventana de 4 minutos.
 
@@ -101,6 +114,11 @@ SELECT * FROM 'fleet/telemetry'
 - Entrenamiento y dataset: `ModelML/`
 - Notebook de registro (SageMaker): `Sakemaker`
 - Lambdas: `functionLambda/`
+  - `telemetry_alerts`
+  - `telemetry_to_s3`
+  - `fleet_prediction_maintenance`
+  - `IoTtoDynamoDBprocessor`
+  - `getVehicleData`
 - Frontend: `Frontend/`
 
 ---
